@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item android:id="@+id/preview_item" android:title="Preview" android:icon="@drawable/ic_action_preview" android:showAsAction="always"></item><item android:id="@+id/save_item" android:title="Save" android:icon="@drawable/ic_action_save" android:showAsAction="always"></item>
+    
+    
+
+</menu>

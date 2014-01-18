@@ -3,4 +3,20 @@
 
     <string name="app_name">Smooth System Progress Bars</string>
 
+    <string-array name="interpolators">
+        <item>Accelerate</item>
+        <item>Linear</item>
+        <item>AccelerateDecelerate</item>
+        <item>Decelerate</item>
+    </string-array>
+
+    <string name="saturation">Saturation</string>
+    <string name="value">Value</string>
+    <string name="opacity">Opacity</string>
+    <string name="preview">Preview</string>
+    <string name="restore">Restore</string>
+    <string name="save">Save</string>
+    <string name="apply">Apply</string>
+    <string name="invalid_color">Invalid color</string>
+
 </resources>
