@@ -10,10 +10,11 @@ import android.widget.ArrayAdapter;
 public class ColorArrayAdapter extends ArrayAdapter<Integer> {
 
 	private SettingsHelper mSettingsHelper;
-
+	private LayoutInflater mInflater;
 	public ColorArrayAdapter(Context context, int resource, SettingsHelper helper) {
 		super(context, resource);
 		mSettingsHelper = helper;
+		mInflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 	}
 
 	@Override
@@ -31,11 +32,9 @@ public class ColorArrayAdapter extends ArrayAdapter<Integer> {
 	}
 
 	@Override
-	public View getView(int position, View convertView, ViewGroup parent) {
-		View v = convertView;
+	public View getView(int position, View v, ViewGroup parent) {
 		if (v == null) {
-			LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-			v = inflater.inflate(android.R.layout.simple_list_item_1, null);
+			v = mInflater.inflate(android.R.layout.simple_list_item_1, parent, false);
 		}
 
 		int color = getItem(position);
