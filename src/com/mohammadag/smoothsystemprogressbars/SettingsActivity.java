@@ -48,6 +48,7 @@ public class SettingsActivity extends Activity {
 	private SettingsHelper mSettingsHelper;
 	protected int mColor = Color.parseColor("#33b5e5");
 	private ListView mColorsListView;
+	private Interpolator mInterpolator;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -269,24 +270,23 @@ public class SettingsActivity extends Activity {
 		mProgressBar.setSmoothProgressDrawableReversed(mCheckBoxReversed.isChecked());
 		mProgressBar.setSmoothProgressDrawableMirrorMode(mCheckBoxMirror.isChecked());
 
-		Interpolator interpolator;
 		switch (mSpinnerInterpolators.getSelectedItemPosition()) {
 		case 1:
-			interpolator = new LinearInterpolator();
+			mInterpolator = new LinearInterpolator();
 			break;
 		case 2:
-			interpolator = new AccelerateDecelerateInterpolator();
+			mInterpolator = new AccelerateDecelerateInterpolator();
 			break;
 		case 3:
-			interpolator = new DecelerateInterpolator();
+			mInterpolator = new DecelerateInterpolator();
 			break;
 		case 0:
 		default:
-			interpolator = new AccelerateInterpolator();
+			mInterpolator = new AccelerateInterpolator();
 			break;
 		}
 
-		mProgressBar.setSmoothProgressDrawableInterpolator(interpolator);
+		mProgressBar.setSmoothProgressDrawableInterpolator(mInterpolator);
 		mProgressBar.setSmoothProgressDrawableColors(mSettingsHelper.getProgressBarColors());
 	}
 
@@ -311,7 +311,7 @@ public class SettingsActivity extends Activity {
 			mSettingsHelper.setSpeed(mSpeed).setSectionCount(mSectionsCount).setStrokeWidth(mStrokeWidth);
 			mSettingsHelper.setProgressSeparatorLength(mSeparatorLength).setMirrored(mCheckBoxMirror.isChecked());
 			mSettingsHelper.setReversed(mCheckBoxReversed.isChecked()).setProgressBarColor(mColor);
-			mSettingsHelper.setProgressBarInterpolator(mProgressBar.getInterpolator());
+			mSettingsHelper.setProgressBarInterpolator(mInterpolator);
 			return true;
 		case R.id.preview_item:
 			setValues();

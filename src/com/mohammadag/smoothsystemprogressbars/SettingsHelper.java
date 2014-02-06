@@ -110,7 +110,7 @@ public class SettingsHelper {
 	}
 
 	public SettingsHelper setSpeed(float value) {
-		mPreferences.edit().putFloat(KEY_SPEED, value);
+		mPreferences.edit().putFloat(KEY_SPEED, value).commit();
 		return this;
 	}
 
