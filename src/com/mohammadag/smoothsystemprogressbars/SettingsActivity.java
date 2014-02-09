@@ -24,6 +24,7 @@ import android.widget.ListView;
 import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class SettingsActivity extends Activity {
 
@@ -312,6 +313,7 @@ public class SettingsActivity extends Activity {
 			mSettingsHelper.setProgressSeparatorLength(mSeparatorLength).setMirrored(mCheckBoxMirror.isChecked());
 			mSettingsHelper.setReversed(mCheckBoxReversed.isChecked()).setProgressBarColor(mColor);
 			mSettingsHelper.setProgressBarInterpolator(mInterpolator);
+			Toast.makeText(this, getString(R.string.item_successfully_saved), Toast.LENGTH_SHORT).show();
 			return true;
 		case R.id.preview_item:
 			setValues();
