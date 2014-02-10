@@ -15,7 +15,7 @@ public class ColorArrayAdapter extends ArrayAdapter<Integer> {
 	public ColorArrayAdapter(Context context, int resource, SettingsHelper helper) {
 		super(context, resource);
 		mSettingsHelper = helper;
-		mInflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		mInflater = LayoutInflater.from(context);
 	}
 
 	@Override
