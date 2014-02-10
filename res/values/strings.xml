@@ -28,5 +28,6 @@
     <string name="separator_length">Separator length: %ddp</string>
     <string name="sections_count">Sections count: %s</string>
     <string name="interpolator">Interpolator: %s</string>
+    <string name="xposed_description">Replaces ProgressBar with a smoother implementation</string>
 
 </resources>

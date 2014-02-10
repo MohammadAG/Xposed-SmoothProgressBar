@@ -18,10 +18,10 @@
             android:value="true" />
         <meta-data
             android:name="xposedminversion"
-            android:value="2.0*" />
+            android:value="30+" />
         <meta-data
             android:name="xposeddescription"
-            android:value="Replaces ProgressBar with a smoother implementation" />
+            android:value="@string/xposed_description" />
 
         <activity android:name=".SettingsActivity" >
             <intent-filter>
