@@ -79,6 +79,8 @@ public class SettingsActivity extends Activity {
 				setValues();
 			}
 		};
+		
+		mSectionsCount = mSettingsHelper.getSectionsCount();
 
 		mCheckBoxMirror.setOnClickListener(checkboxListener);
 		mCheckBoxReversed.setOnClickListener(checkboxListener);
@@ -87,7 +89,7 @@ public class SettingsActivity extends Activity {
 			@Override
 			public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
 				mSpeed = ((float) progress + 1) / 10;
-				mTextViewSpeed.setText("Speed: " + mSpeed);
+				mTextViewSpeed.setText(getString(R.string.speed, String.valueOf(mSpeed)));
 				if (fromUser)
 					setValues();
 			}
@@ -106,10 +108,12 @@ public class SettingsActivity extends Activity {
 		mSeekBarSectionsCount.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 			@Override
 			public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-				mSectionsCount = progress + 1;
-				mTextViewSectionsCount.setText("Sections count: " + mSectionsCount);
-				if (fromUser)
+				
+				mTextViewSectionsCount.setText(getString(R.string.sections_count, progress+1));
+				if (fromUser) {
+					mSectionsCount = progress + 1;
 					setValues();
+				}
 			}
 
 			@Override
@@ -127,7 +131,7 @@ public class SettingsActivity extends Activity {
 			@Override
 			public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
 				mSeparatorLength = progress;
-				mTextViewSeparatorLength.setText(String.format("Separator length: %ddp", mSeparatorLength));
+				mTextViewSeparatorLength.setText(getString(R.string.separator_length, mSeparatorLength));
 				if (fromUser)
 					setValues();
 			}
@@ -147,7 +151,7 @@ public class SettingsActivity extends Activity {
 			@Override
 			public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
 				mStrokeWidth = progress;
-				mTextViewStrokeWidth.setText(String.format("Stroke width: %ddp", mStrokeWidth));
+				mTextViewStrokeWidth.setText(getString(R.string.stroke_width, mStrokeWidth));
 				setValues();
 			}
 
@@ -163,7 +167,7 @@ public class SettingsActivity extends Activity {
 		});
 
 		mSeekBarSeparatorLength.setProgress(mSettingsHelper.getProgressSeparatorLength());
-		mSeekBarSectionsCount.setProgress(mSettingsHelper.getSectionsCount());
+		mSeekBarSectionsCount.setProgress(mSectionsCount);
 		mSeekBarStrokeWidth.setProgress((int)mSettingsHelper.getStrokeWidth());
 		mCheckBoxMirror.setChecked(mSettingsHelper.getMirrored());
 		mCheckBoxReversed.setChecked(mSettingsHelper.getReversed());
@@ -225,7 +229,23 @@ public class SettingsActivity extends Activity {
 				return true;
 			}
 		});
+		
+		Interpolator interpolator = mSettingsHelper.getProgressBarInterpolator();
+		int position = 0;
+		if (interpolator instanceof AccelerateInterpolator)
+			position = 0;
+		else if (interpolator instanceof LinearInterpolator)
+			position = 1;
+		else if (interpolator instanceof AccelerateDecelerateInterpolator)
+			position = 2;
+		else if (interpolator instanceof DecelerateInterpolator)
+			position = 3;
+		
+		mSpinnerInterpolators.setSelection(position);
 		setValues();
+		mTextViewSectionsCount.setText(getString(R.string.sections_count,
+				String.valueOf(mSectionsCount)));
+		mSeekBarSectionsCount.setProgress(mSectionsCount-1);
 	}
 
 	@Override
@@ -250,7 +270,7 @@ public class SettingsActivity extends Activity {
 
 		mSettingsHelper.setProgressBarColors(colors);
 		((ColorArrayAdapter) mColorsListView.getAdapter()).notifyDataSetChanged();
-
+		
 		setValues();
 		super.onActivityResult(requestCode, resultCode, data);
 	}

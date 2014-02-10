@@ -26,21 +26,21 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Reversed" />
+                android:text="@string/reversed" />
 
             <CheckBox
                 android:id="@+id/checkbox_mirror"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Mirror Mode" />
+                android:text="@string/mirror_mode" />
         </LinearLayout>
 
         <TextView
             android:id="@+id/textview_speed"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Speed: " />
+            android:text="@string/speed" />
 
         <SeekBar
             android:id="@+id/seekbar_speed"
@@ -52,7 +52,7 @@
             android:id="@+id/textview_stroke_width"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Stroke width: " />
+            android:text="@string/stroke_width" />
 
         <SeekBar
             android:id="@+id/seekbar_stroke_width"
@@ -64,7 +64,7 @@
             android:id="@+id/textview_separator_length"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Separator length" />
+            android:text="@string/separator_length" />
 
         <SeekBar
             android:id="@+id/seekbar_separator_length"
@@ -76,7 +76,7 @@
             android:id="@+id/textview_sections_count"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Sections Count" />
+            android:text="@string/sections_count" />
 
         <SeekBar
             android:id="@+id/seekbar_sections_count"
@@ -84,16 +84,28 @@
             android:layout_height="wrap_content"
             android:max="12" />
 
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/interpolator" />
+
         <Spinner
             android:id="@+id/spinner_interpolator"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
+        
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/scroll_down_hint" />
 
         <ListView
             android:id="@+id/colorListView"
             android:layout_width="match_parent"
-            android:layout_height="136dp"
-            android:minHeight="100dp" >
+            android:layout_height="140dp"
+            android:minHeight="120dp"
+            android:fadeScrollbars="false" >
         </ListView>
 
     </LinearLayout>

@@ -20,5 +20,13 @@
     <string name="invalid_color">Invalid color</string>
     
     <string name="item_successfully_saved">Items successfully saved!</string>
+    <string name="scroll_down_hint">Scroll down the list to add more colors, tap and hold to delete a color</string>
+    <string name="reversed">Reversed</string>
+    <string name="mirror_mode">Mirror mode</string>
+    <string name="speed">Speed: %s</string>
+    <string name="stroke_width">Stroke width: %ddp</string>
+    <string name="separator_length">Separator length: %ddp</string>
+    <string name="sections_count">Sections count: %s</string>
+    <string name="interpolator">Interpolator: %s</string>
 
 </resources>
