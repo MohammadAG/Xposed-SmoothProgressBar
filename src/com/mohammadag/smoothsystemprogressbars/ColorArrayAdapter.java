@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.TextView;
 
 public class ColorArrayAdapter extends ArrayAdapter<Integer> {
 
@@ -37,8 +38,15 @@ public class ColorArrayAdapter extends ArrayAdapter<Integer> {
 			v = mInflater.inflate(android.R.layout.simple_list_item_1, parent, false);
 		}
 
+		TextView textView = (TextView) v.findViewById(android.R.id.text1);
+		
 		int color = getItem(position);
 		v.setBackgroundColor(color);
+		if (position+1 == getCount()) {
+			textView.setText(R.string.tap_to_add);
+		} else {
+			textView.setText(R.string.hold_to_delete);
+		}
 
 		return v;
 	}
