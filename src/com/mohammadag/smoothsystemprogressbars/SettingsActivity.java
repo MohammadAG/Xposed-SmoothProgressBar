@@ -173,7 +173,8 @@ public class SettingsActivity extends Activity {
 		mCheckBoxReversed.setChecked(mSettingsHelper.getReversed());
 		mSpeed = mSettingsHelper.getSpeed();
 		mSeekBarSpeed.setProgress((int)(mSpeed * 10) - 1);
-		mTextViewSpeed.setText("Speed: " + mSpeed);
+		mTextViewSpeed.setText(getString(R.string.speed, mSpeed));
+		mTextViewSeparatorLength.setText(getString(R.string.separator_length, mSeparatorLength));
 
 		mSpinnerInterpolators.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, getResources().getStringArray(R.array.interpolators)));
 		mSpinnerInterpolators.setOnItemSelectedListener(new OnItemSelectedListener() {
